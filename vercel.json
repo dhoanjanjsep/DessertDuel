@@ -6,70 +6,20 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/Build/(.*)",
-      "headers": {
-        "Content-Type": "application/octet-stream"
-      }
-    },
-    {
-      "src": "/Build/(.*\\.wasm)",
-      "headers": {
-        "Content-Type": "application/wasm"
-      }
-    },
-    {
-      "src": "/Build/(.*\\.js)",
-      "headers": {
-        "Content-Type": "application/javascript"
-      }
-    },
-    {
-      "src": "/Build/(.*\\.data)",
-      "headers": {
-        "Content-Type": "application/octet-stream"
-      }
-    },
-    {
-      "src": "/Build/(.*\\.symbols\\.json)",
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    },
-    {
-      "src": "/TemplateData/(.*)",
-      "headers": {
-        "Content-Type": "application/octet-stream"
-      }
-    },
-    {
-      "src": "/TemplateData/(.*\\.css)",
-      "headers": {
-        "Content-Type": "text/css"
-      }
-    },
-    {
-      "src": "/TemplateData/(.*\\.png)",
-      "headers": {
-        "Content-Type": "image/png"
-      }
-    },
-    {
-      "src": "/TemplateData/(.*\\.ico)",
-      "headers": {
-        "Content-Type": "image/x-icon"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/Build/(.*)",
+      "source": "/Build/(.*\\.wasm)",
       "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        },
         {
           "key": "Cross-Origin-Embedder-Policy",
           "value": "require-corp"
@@ -77,6 +27,110 @@
         {
           "key": "Cross-Origin-Opener-Policy",
           "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/Build/(.*\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/Build/(.*\\.data)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/Build/(.*\\.symbols\\.json)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/Build/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/TemplateData/(.*\\.css)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "/TemplateData/(.*\\.png)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
+    },
+    {
+      "source": "/TemplateData/(.*\\.ico)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/x-icon"
+        }
+      ]
+    },
+    {
+      "source": "/TemplateData/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
         }
       ]
     }
