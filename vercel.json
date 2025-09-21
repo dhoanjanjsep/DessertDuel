@@ -1,0 +1,84 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/Build/(.*)",
+      "headers": {
+        "Content-Type": "application/octet-stream"
+      }
+    },
+    {
+      "src": "/Build/(.*\\.wasm)",
+      "headers": {
+        "Content-Type": "application/wasm"
+      }
+    },
+    {
+      "src": "/Build/(.*\\.js)",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/Build/(.*\\.data)",
+      "headers": {
+        "Content-Type": "application/octet-stream"
+      }
+    },
+    {
+      "src": "/Build/(.*\\.symbols\\.json)",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "src": "/TemplateData/(.*)",
+      "headers": {
+        "Content-Type": "application/octet-stream"
+      }
+    },
+    {
+      "src": "/TemplateData/(.*\\.css)",
+      "headers": {
+        "Content-Type": "text/css"
+      }
+    },
+    {
+      "src": "/TemplateData/(.*\\.png)",
+      "headers": {
+        "Content-Type": "image/png"
+      }
+    },
+    {
+      "src": "/TemplateData/(.*\\.ico)",
+      "headers": {
+        "Content-Type": "image/x-icon"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/Build/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    }
+  ]
+}
