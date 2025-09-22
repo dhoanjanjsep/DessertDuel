@@ -4,11 +4,15 @@
     {
       "src": "index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "Build/**",
+      "use": "@vercel/static"
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!Build/).*)",
       "destination": "/index.html"
     }
   ],
