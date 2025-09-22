@@ -8,11 +8,15 @@
     {
       "src": "Build/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "TemplateData/**",
+      "use": "@vercel/static"
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!Build/).*)",
+      "source": "/((?!Build/|TemplateData/).*)",
       "destination": "/index.html"
     }
   ],
@@ -45,6 +49,24 @@
         {
           "key": "Content-Encoding",
           "value": "br"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.data)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
         }
       ]
     }
